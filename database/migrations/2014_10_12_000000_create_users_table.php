@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Schema;
 class CreateUsersTable extends Migration
 {
     /**
-     * Run the migrations.
+     * user
      *
      * @return void
      */
@@ -15,8 +15,12 @@ class CreateUsersTable extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('email')->unique();
+            $table->string('name')->comment('真实姓名')->default('');
+            $table->string('nick_name',20)->comment('昵称')->default('');
+            $table->string('phone',15)->unique()->comment('手机号');
+            $table->string('avatar',80)->comment('头像')->nullable()->default('');
+            $table->string('description',100)->comment('简介')->nullable()->default('');
+            $table->string('email')->nullable()->default('')->comment('邮箱');
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();

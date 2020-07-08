@@ -14,6 +14,17 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+//Route::middleware('auth:api')->get('/user', function (Request $request) {
+//    return $request->user();
+//});
+
+Route::group(['namespace' => 'Api'], function () {
+    # 文章内容接口
+    Route::group(['prefix' => 'article'],function (){
+        # 文章列表
+        Route::get('/list','ArticleController@list');
+        # 文章详情
+        Route::get('/{id}/detail','ArticleController@detail')->where('id','[0-9]+');
+    });
+
 });
