@@ -2,9 +2,11 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Tymon\JWTAuth\Contracts\JWTSubject;
 
-class User extends Model
+
+class User extends Authenticatable implements JWTSubject
 {
     //
     protected $table = 'users';
@@ -35,4 +37,22 @@ class User extends Model
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    /**
+     * 获取会储存到 jwt 声明中的标识
+     * @return mixed
+     */
+    public function getJWTIdentifier()
+    {
+        return $this->getKey();
+    }
+
+    /**
+     * 返回包含要添加到 jwt 声明中的自定义键值对数组
+     * @return array
+     */
+    public function getJWTCustomClaims()
+    {
+        return ['role' => 'user'];
+    }
 }

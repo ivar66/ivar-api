@@ -42,7 +42,7 @@ return [
         ],
 
         'api' => [
-            'driver' => 'token',
+            'driver' => 'jwt',
             'provider' => 'users',
             'hash' => false,
         ],
@@ -68,13 +68,8 @@ return [
     'providers' => [
         'users' => [
             'driver' => 'eloquent',
-            'model' => App\User::class,
+            'model' => App\Models\User::class,
         ],
-
-        // 'users' => [
-        //     'driver' => 'database',
-        //     'table' => 'users',
-        // ],
     ],
 
     /*
