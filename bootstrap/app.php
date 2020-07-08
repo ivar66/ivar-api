@@ -40,6 +40,7 @@ $app->singleton(
     Illuminate\Contracts\Debug\ExceptionHandler::class,
     App\Exceptions\Handler::class
 );
+require_once __DIR__ . '/helpers.php';
 
 /*
 |--------------------------------------------------------------------------
