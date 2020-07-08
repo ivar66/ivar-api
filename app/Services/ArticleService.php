@@ -27,18 +27,35 @@ class ArticleService{
         $lists = [];
         foreach ($items as $item){
             $objItem =  $item->setVisible(['id','title','type','category','description','key_words','cover_images','content','read_number'])->toArray();
+            $objItem['created_at'] = $item->created_at->format('Y-m-d H:i:s');
             $lists[] = $objItem;
         }
         return ['total' => $total,'list' => $items];
     }
 
     /**
-     * get article detail
+     * 文章详情
      * @param $id
      * @return \Illuminate\Database\Eloquent\Builder|\Illuminate\Database\Eloquent\Model|null|object
      */
     public static function getArticleDetailById($id){
         $itemDetail = Article::query()->where('id',$id)->first();
+        $itemDetail->created_at = $itemDetail->created_at->format('Y-m-d H:i:s');
         return $itemDetail;
+    }
+
+    /**
+     * 新增文章
+     */
+    public static function createArticle(){
+        //todo
+    }
+
+    /**
+     * @param $params 需要更新的内容
+     * @param $id 文章的ID
+     */
+    public static function updateArticleById($params,$id){
+        //todo
     }
 }
