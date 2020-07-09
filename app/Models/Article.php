@@ -14,4 +14,12 @@ class Article extends Model
     ];
 
     protected $table = 'articles';
+
+    // 类别 映射关系
+    const CATEGORY_NAME = [
+          '10' => '文章',
+          '20' => '美食',
+          '30' => '好物',
+          '40' => '图片',
+    ];
 }

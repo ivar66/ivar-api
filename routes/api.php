@@ -21,6 +21,10 @@ Route::group(['namespace' => 'Api'], function () {
         Route::get('/list','ArticleController@list');
         # 文章详情
         Route::get('/{id}/detail','ArticleController@detail')->where('id','[0-9]+');
+        # 新增文章
+        Route::post('/create','ArticleController@create');
+        # 修改文章-保存
+        Route::post('/{id}/store','ArticleController@store')->where('id','[0-9]+');
     });
 
     Route::group(['prefix' => 'member'],function (){
@@ -30,7 +34,6 @@ Route::group(['namespace' => 'Api'], function () {
         Route::post('/logout','UserController@logout');
         # 获取用户信息
         Route::get('/info','UserController@info');
-
     });
 
 });

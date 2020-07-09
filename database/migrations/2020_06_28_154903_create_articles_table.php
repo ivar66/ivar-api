@@ -15,7 +15,7 @@ class CreateArticlesTable extends Migration
     public function up()
     {
         Schema::create('articles', function (Blueprint $table) {
-            $table->unsignedBigInteger('id');
+            $table->id('id');
             $table->string('title',50)->comment('标题')->nullable()->default('');
             $table->tinyInteger('type')->comment('文章内容 1、markdown 2、富文本')->nullable()->default(1);
             $table->integer('category')->comment('类别 10 文章，20 美食，30 好物 40 图片')->nullable()->default(10);
