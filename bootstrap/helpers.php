@@ -30,17 +30,21 @@ if (!function_exists('api_response')) {
     /**
      * API Response Wrapper.
      *
-     * @param $data
+     * @param array $data
      * @param int $status
      * @param array $headers
      * @param int $options
+     * @param int $code
+     * @param string $msg
      * @return \Illuminate\Http\JsonResponse
      */
-    function api_response($data = [], $status = 200, array $headers = [], $options = 0)
+    function api_response($data = [],$code = 200,$msg = 'success', $status = 200, array $headers = [], $options = 0)
     {
         $now = microtime(true);
 
         $data = [
+            'code' => $code,
+            'msg'  => $msg,
             'data' => $data,
             'meta' => [
                 'timestamp' => $now,
