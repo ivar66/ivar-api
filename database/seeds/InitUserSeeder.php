@@ -16,7 +16,7 @@ class InitUserSeeder extends Seeder
         //
         DB::table('users')->insert([
            'nick_name'   => 'ivar',
-            'phone'      => '18811414533',
+            'phone'      => '18811333333',
             'password'   => bcrypt(12345678),
         ]);
     }
